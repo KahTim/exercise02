@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  root 'home#index'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
@@ -53,4 +55,18 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get '/owners' => 'owners#index'
+  get '/:owner_name/articles' => 'articles#index'
+  get '/:articles/:id' => 'articles#show'
+  get '/:owner_name' => 'owners#show'
+
 end
+
+# /:owner_name/articles => this route should return all articles that belongs to the :owner_name in JSON format
+
+# /:articles/:id => this route should return a specific article (based on the :id) in JSON format
+
+# /owners => this route should return all owners in JSON format
+
+# /:owner_name => this route should return a specific owner in JSON format
